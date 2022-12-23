@@ -1,1 +1,1 @@
-import("./cob/_listPreview.js");
+import("./cob/_mdPreview.js");
