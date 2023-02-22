@@ -1,5 +1,4 @@
 cob.custom.customize.push(function (core, utils, ui) {
-  utils.loadScript("https://cdn.jsdelivr.net/npm/marked/marked.min.js",  () => {
 
   core.customizeAllColumns("*", (node, esDoc, colDef) => {
     function htmlDecode(input){
@@ -9,7 +8,6 @@ cob.custom.customize.push(function (core, utils, ui) {
     }
 
     if (/[$]markdown.*[$]style\[([^,]+,)*mdPreview(,[^,]+)*\]/.exec(colDef.fieldDefDescription) && node.innerHTML) {
-      debugger
       marked.setOptions({xhtml:false})
 
       node.classList.add("dollarMarkdownCell");
@@ -19,5 +17,4 @@ cob.custom.customize.push(function (core, utils, ui) {
                       +" </div>"
       }
     });
-   });
 })
