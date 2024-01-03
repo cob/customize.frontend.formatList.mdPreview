@@ -14,7 +14,7 @@ function handleDollarPreview(){
   
         node.classList.add("dollarMarkdownCell");
         node.innerHTML = " <i class='dollarMarkdownText fa-brands fa-markdown'></i>"
-          + " <div class='transition_effect'>"
+          + " <div class='transition-opacity duration-600 transition_effect'>"
           + marked.parse(htmlDecode(node.innerHTML))
           + " </div>"
     
@@ -30,7 +30,6 @@ const MD_PREVIEW_CLASSNAME = "dollarMarkdownPreview"
 function showMDPreview(e) {
   if (e.target.classList.contains("dollarMarkdownText")) {
     e.target.nextElementSibling.classList.toggle(MD_PREVIEW_CLASSNAME)
-    e.target.nextElementSibling.classList.toggle("transition_effect")
 
     controlCanvasPosition(e.clientX,e.target.nextElementSibling)
   }else{
