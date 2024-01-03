@@ -1,12 +1,16 @@
 .dollarMarkdownCell .dollarMarkdownText {
 	text-align: center;
-	font-style: italic;
 	display:inline-block;
 	width: 100%;
-	font-size: 11px;
+	font-size: 16px;
 }
-
-.dollarMarkdownCell:hover .dollarMarkdownPreview {
+.dollarMarkdownCell .dollarMarkdownText:hover {
+	cursor: pointer;
+}
+.transition_effect {
+	opacity: 0;
+}
+.dollarMarkdownPreview {
 	z-index: 999;
 	position: fixed;
 	object-fit: contain;
@@ -21,4 +25,6 @@
 	white-space: normal;
 	padding: 7px;
 	margin-bottom:10px;
+  	opacity: 1;
+	transition: visibility 0s, opacity 0.5s ease;
 }
