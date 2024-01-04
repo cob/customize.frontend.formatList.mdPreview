@@ -11,7 +11,6 @@ function handleDollarPreview(){
       let hasMarkdownDollar = /[$]markdown.*[$]style\[([^,]+,)*mdPreview(,[^,]+)*\]/.exec(colDef.fieldDefDescription)
       if (hasMarkdownDollar && node.innerHTML) {
         marked.setOptions({ xhtml: false })
-        console.log("QUIA AQUI")
         node.classList.add("dollarMarkdownCell");
         node.innerHTML = `
           <div class='flex align-center justify-center relative'> <div class='max-w-[80%] mr-2 text-ellipsis overflow-hidden'> ${node.innerHTML} </div> <i class='dollarMarkdownText fa-brands fa-markdown absolute right-6'></i> </div>
