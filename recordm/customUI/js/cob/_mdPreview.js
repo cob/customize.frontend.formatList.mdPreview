@@ -14,7 +14,7 @@ function handleDollarPreview(){
   
         node.classList.add("dollarMarkdownCell");
         node.innerHTML = " <i class='dollarMarkdownText fa-brands fa-markdown'></i>"
-          + " <div class='transition-opacity duration-600 transition_effect'>"
+          + " <div class='transition-opacity duration-700 transition_effect'>"
           + marked.parse(htmlDecode(node.innerHTML))
           + " </div>"
     
