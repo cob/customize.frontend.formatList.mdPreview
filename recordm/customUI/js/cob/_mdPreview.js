@@ -11,13 +11,15 @@ function handleDollarPreview(){
       let hasMarkdownDollar = /[$]markdown.*[$]style\[([^,]+,)*mdPreview(,[^,]+)*\]/.exec(colDef.fieldDefDescription)
       if (hasMarkdownDollar && node.innerHTML) {
         marked.setOptions({ xhtml: false })
-  
+        console.log("QUIA AQUI")
         node.classList.add("dollarMarkdownCell");
-        node.innerHTML = " <i class='dollarMarkdownText fa-brands fa-markdown'></i>"
-          + " <div class='transition-opacity duration-700 transition_effect'>"
-          + marked.parse(htmlDecode(node.innerHTML))
-          + " </div>"
-    
+        node.innerHTML = `
+          <div class='flex align-center justify-center relative'> <div class='max-w-[80%] mr-2 text-ellipsis overflow-hidden'> ${node.innerHTML} </div> <i class='dollarMarkdownText fa-brands fa-markdown absolute right-6'></i> </div>
+          <div class='transition-opacity duration-200 transition_effect'>
+          ${marked.parse(htmlDecode(node.innerHTML))}
+          </div>
+        `        
+
         if(runOnce){
           pdfPreviewDocumentOnclickHandler()
         }
@@ -29,15 +31,21 @@ function handleDollarPreview(){
 const MD_PREVIEW_CLASSNAME = "dollarMarkdownPreview"
 function showMDPreview(e) {
   if (e.target.classList.contains("dollarMarkdownText")) {
-    e.target.nextElementSibling.classList.toggle(MD_PREVIEW_CLASSNAME)
-
-    controlCanvasPosition(e.clientX,e.target.nextElementSibling)
+    let previewBlock = e.target.parentElement.nextElementSibling
+    hideAllPreviews(previewBlock)
+    previewBlock.classList.toggle(MD_PREVIEW_CLASSNAME)
+    controlCanvasPosition(e.clientX,previewBlock)
   }else{
-    let elements = document.getElementsByClassName(MD_PREVIEW_CLASSNAME)
-    for (let child of elements) {
-      child.classList.remove(MD_PREVIEW_CLASSNAME)
-    }
+    hideAllPreviews(null)
   }
+}
+function hideAllPreviews(currentPreview) {
+  let elements = document.getElementsByClassName(MD_PREVIEW_CLASSNAME)
+    for (let child of elements) {
+      if(currentPreview != child){
+        child.classList.remove(MD_PREVIEW_CLASSNAME)
+      }
+    }
 }
 function pdfPreviewDocumentOnclickHandler() {
   let aux = document.onclick
