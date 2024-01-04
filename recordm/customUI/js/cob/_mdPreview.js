@@ -13,7 +13,10 @@ function handleDollarPreview(){
         marked.setOptions({ xhtml: false })
         node.classList.add("dollarMarkdownCell");
         node.innerHTML = `
-          <div class='flex align-center justify-center relative'> <div class='max-w-[80%] mr-2 text-ellipsis overflow-hidden'> ${node.innerHTML} </div> <i class='dollarMarkdownText fa-brands fa-markdown absolute right-6'></i> </div>
+          <div class='flex align-center'> 
+            <i class='dollarMarkdownText fa-brands fa-markdown mr-2'></i>
+            <div class='max-w-[80%] text-ellipsis overflow-hidden'> ${node.innerHTML} </div> 
+          </div>
           <div class='transition-opacity duration-200 transition_effect'>
           ${marked.parse(htmlDecode(node.innerHTML))}
           </div>
