@@ -1,11 +1,3 @@
-.dollarMarkdownCell .dollarMarkdownText {
-	text-align: center;
-	display:inline-block;
-	font-size: 14px;
-}
-.dollarMarkdownCell .dollarMarkdownText:hover {
-	cursor: pointer;
-}
 .transition_effect {
 	opacity: 0;
 }

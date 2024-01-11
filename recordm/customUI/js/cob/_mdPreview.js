@@ -13,9 +13,9 @@ function handleDollarPreview(){
         marked.setOptions({ xhtml: false })
         node.classList.add("dollarMarkdownCell");
         node.innerHTML = `
-          <div class='flex align-center items-center'> 
-            <i class='dollarMarkdownText fa-regular fa-eye mr-2'></i>
-            <div class='max-w-[80%] text-ellipsis overflow-hidden'> ${node.innerHTML} </div> 
+          <div class='flex align-center items-center hover:cursor-pointer hover:text-slate-400 dollarMarkdownText'> 
+            <i class='text-center inline-block text-sm/[14px] fa-regular fa-eye mr-2 text-slate-400'></i>
+            <div class='max-w-[80%] text-ellipsis overflow-hidden'> ${node.innerHTML.replace(/^#+|#+$/g,'#')} </div> 
           </div>
           <div class='transition-opacity duration-200 transition_effect'>
           ${marked.parse(htmlDecode(node.innerHTML))}
@@ -32,7 +32,7 @@ function handleDollarPreview(){
 }
 const MD_PREVIEW_CLASSNAME = "dollarMarkdownPreview"
 function showMDPreview(e) {
-  if (e.target.classList.contains("dollarMarkdownText")) {
+  if (e.target.parentElement.classList.contains("dollarMarkdownText")) {
     let previewBlock = e.target.parentElement.nextElementSibling
     hideAllPreviews(previewBlock)
     previewBlock.classList.toggle(MD_PREVIEW_CLASSNAME)
