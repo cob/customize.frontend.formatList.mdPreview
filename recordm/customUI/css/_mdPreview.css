@@ -1,21 +1,27 @@
 .transition_effect {
 	opacity: 0;
 }
+
 .dollarMarkdownPreview {
 	z-index: 999;
 	position: fixed;
 	object-fit: contain;
-	right: 2%;
+  right: 10px;
 	top: 10px;
+  bottom: 10px;
 	width: 500px;
 	max-width: 90%;
-	height: -webkit-fill-available;
 	border: 1px solid gray;
 	background-color: white;
 	overflow-x: scroll;
 	white-space: normal;
 	padding: 7px;
   	opacity: 1;
+}
+
+.dollarMarkdownPreviewLft {
+  left: 10px;
+  right: auto;
 }
 
 .fa-brands{

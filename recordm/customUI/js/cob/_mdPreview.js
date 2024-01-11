@@ -13,12 +13,14 @@ function handleDollarPreview(){
         marked.setOptions({ xhtml: false })
         node.classList.add("dollarMarkdownCell");
         node.innerHTML = `
-          <div class='flex align-center items-center '> 
+          <div class='flex align-center items-center hover:cursor-pointer hover:text-slate-500 '> 
             <i class='dollarMarkdownText fa-regular fa-eye mr-2 cursor-pointer'></i>
-            <div class='max-w-[80%] text-ellipsis overflow-hidden'> ${node.innerHTML} </div> 
+            <div class='dollarMarkdownText max-w-[80%] text-ellipsis overflow-hidden'>  ${node.innerHTML.replace(/^#+|#+$/g,'#')} </div> 
           </div>
-          <div class='transition-opacity duration-200 transition_effect m-8 py-6 px-4 md-preview bg-white'>
-          ${marked.parse(htmlDecode(node.innerHTML))}
+          <div class='transition-opacity duration-200 transition_effect py-6 bg-white'>
+            <div class="md-preview m-0 max-h-full overflow-auto px-6">
+              ${marked.parse(htmlDecode(node.innerHTML))}
+            </div>
           </div>
         `        
 
@@ -63,9 +65,9 @@ function pdfPreviewDocumentOnclickHandler() {
 
 function controlCanvasPosition(x,canvasDiv) {
   if (x > (window.innerWidth - canvasDiv.clientWidth)) {
-    canvasDiv.classList.add("dollarImgLft")
+    canvasDiv.classList.add("dollarMarkdownPreviewLft")
   } else {
-    canvasDiv.classList.remove("dollarImgLft")
+    canvasDiv.classList.remove("dollarMarkdownPreviewLft")
   }
 }
 
